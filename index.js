@@ -9,22 +9,39 @@ inquirer
             name: "name",
         },
         {
-            type: "list", 
-            message: "What languages do you know?",
-            choices: ["English", "Spanish", "French"],
-            name: "language",
+            type: "input", 
+            message: "Where are you located?",
+            name: "location",
         },
         {
-            type: "list",
-            message: "What is your preferred method of communication?",
-            choices: ["text", "call", "letter"],
-            name: "communication",
+            type: "input",
+            message: "What do you want your bio to be?",
+            name: "bio",
+        },
+        {
+            type: "input",
+            message: "What is your LinkedIn?",
+            name: "linkedin",
+        },
+        {
+            type: "input",
+            message: "What is your GitHub?",
+            name: "github",
         },
     ])
     .then((response) =>
-        // response.ok ? console.log("yay") : console.log("oh no")
-        fs.writeFile("log.txt", `${response.name} preferrs to use ${response.communication} in the language ${response.language} for communication`, (err) =>  
-        err ? console.error(err) : console.log('Success!')
-        )
+        writeHTML("index.html", response)
         
     )
+
+const writeHTML = (fileName, data) => {
+    const fileContent = generateHTML(data)
+
+    fs.writeFile(fileName, fileContent, (err) =>
+    err ? console.error(err) : console.log("Success")
+    )
+}
+
+const generateHTML = (data) => {
+    return ``
+}
